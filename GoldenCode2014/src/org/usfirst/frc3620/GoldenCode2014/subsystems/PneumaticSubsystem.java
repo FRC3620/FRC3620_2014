@@ -76,4 +76,9 @@ public class PneumaticSubsystem extends Subsystem {
         }
         pushCylinder.set(DoubleSolenoid.Value.kOff);
     }
+    public void init(){
+        loaderCylinder.set(DoubleSolenoid.Value.kReverse);
+        pushCylinder.set(DoubleSolenoid.Value.kReverse);
+    }
+    
 }
