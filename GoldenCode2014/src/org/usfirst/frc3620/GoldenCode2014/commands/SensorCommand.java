@@ -9,6 +9,7 @@
 // it from being updated in the future.
 package org.usfirst.frc3620.GoldenCode2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
 /**
  *
@@ -24,10 +25,12 @@ public class  SensorCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        SmartDashboard.putNumber("light", 0);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         Robot.sensorSubsystem.sendToDriverStation();
+        Robot.sensorSubsystem.sendToArduino((int) SmartDashboard.getNumber("light", 0));
       
     }
     // Make this return true when this Command no longer needs to run execute()
