@@ -26,13 +26,13 @@ public class RobotMap {
     public static DoubleSolenoid pneumaticSubsystemPushCylinder;
     public static Compressor pneumaticSubsystemCompressor1;
     public static DoubleSolenoid pneumaticSubsystemLoadCylinder2;
-    public static SpeedController driveSubsystemSpeedController1;
     public static SpeedController driveSubsystemSpeedController2;
-    public static SpeedController driveSubsystemSpeedController4;
-    public static SpeedController driveSubsystemSpeedController5;
-    public static RobotDrive driveSubsystemPrimaryDrive;
     public static SpeedController driveSubsystemSpeedController3;
+    public static SpeedController driveSubsystemSpeedController5;
     public static SpeedController driveSubsystemSpeedController6;
+    public static RobotDrive driveSubsystemPrimaryDrive;
+    public static SpeedController driveSubsystemSpeedController4;
+    public static SpeedController driveSubsystemSpeedController1;
     public static RobotDrive driveSubsystemTurboDrive;
     public static Encoder driveSubsystemDriveEncoder;
     public static DigitalOutput sensorSubsystemArduino8;
@@ -59,20 +59,20 @@ public class RobotMap {
         pneumaticSubsystemLoadCylinder2 = new DoubleSolenoid(1, 3, 4);      
 	
         
-        driveSubsystemSpeedController1 = new Talon(1, 1);
-	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 1", (Talon) driveSubsystemSpeedController1);
-        
         driveSubsystemSpeedController2 = new Talon(1, 2);
 	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 2", (Talon) driveSubsystemSpeedController2);
         
-        driveSubsystemSpeedController4 = new Talon(1, 4);
-	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 4", (Talon) driveSubsystemSpeedController4);
+        driveSubsystemSpeedController3 = new Talon(1, 3);
+	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 3", (Talon) driveSubsystemSpeedController3);
         
         driveSubsystemSpeedController5 = new Talon(1, 5);
 	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 5", (Talon) driveSubsystemSpeedController5);
         
-        driveSubsystemPrimaryDrive = new RobotDrive(driveSubsystemSpeedController1, driveSubsystemSpeedController2,
-              driveSubsystemSpeedController4, driveSubsystemSpeedController5);
+        driveSubsystemSpeedController6 = new Talon(1, 6);
+	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 6", (Talon) driveSubsystemSpeedController6);
+        
+        driveSubsystemPrimaryDrive = new RobotDrive(driveSubsystemSpeedController2, driveSubsystemSpeedController3,
+              driveSubsystemSpeedController5, driveSubsystemSpeedController6);
 	
         driveSubsystemPrimaryDrive.setSafetyEnabled(false);
         driveSubsystemPrimaryDrive.setExpiration(0.1);
@@ -82,13 +82,13 @@ public class RobotMap {
         driveSubsystemPrimaryDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         driveSubsystemPrimaryDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
         driveSubsystemPrimaryDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
-        driveSubsystemSpeedController3 = new Talon(1, 3);
-	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 3", (Talon) driveSubsystemSpeedController3);
+        driveSubsystemSpeedController4 = new Talon(1, 4);
+	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 4", (Talon) driveSubsystemSpeedController4);
         
-        driveSubsystemSpeedController6 = new Talon(1, 6);
-	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 6", (Talon) driveSubsystemSpeedController6);
+        driveSubsystemSpeedController1 = new Victor(1, 1);
+	LiveWindow.addActuator("DriveSubsystem", "Speed Controller 1", (Victor) driveSubsystemSpeedController1);
         
-        driveSubsystemTurboDrive = new RobotDrive(driveSubsystemSpeedController3, driveSubsystemSpeedController6);
+        driveSubsystemTurboDrive = new RobotDrive(driveSubsystemSpeedController1, driveSubsystemSpeedController4);
 	
         driveSubsystemTurboDrive.setSafetyEnabled(false);
         driveSubsystemTurboDrive.setExpiration(0.1);
