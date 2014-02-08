@@ -9,15 +9,17 @@
 // it from being updated in the future.
 package org.usfirst.frc3620.GoldenCode2014.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
+import org.usfirst.frc3620.GoldenCode2014.subsystems.SensorSubsystem;
 
 /**
  *
  */
 public class SensorCommand extends Command {
-
+       
     double t1;
     double t2;
     double difference;
@@ -38,7 +40,7 @@ public class SensorCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.sensorSubsystem.sendToArduino((int) SmartDashboard.getNumber("light", 0));
+       
         if (isFirstTime = true) {
             t1 = Robot.sensorSubsystem.getDigitalDistanceInFeet();
             /* TODO Mike: you sure you want to turn isFirstTime back off here? DW */
@@ -52,6 +54,18 @@ public class SensorCommand extends Command {
             Robot.sensorSubsystem.SonarErrorTrue();
         } else {
             Robot.sensorSubsystem.SonarErrorfalse();
+        }
+        double distance = Robot.sensorSubsystem.getDigitalDistanceInFeet();
+        System.out.println("distance = " + distance);
+        if (distance <= 12 && distance >= 10) {
+            Robot.sensorSubsystem.sendToArduino(4);
+        } else {
+            if (Robot.driverStation.getAlliance() == DriverStation.Alliance.kBlue) {
+                System.out.print("getting alliance");
+                Robot.sensorSubsystem.sendToArduino(SensorSubsystem.BLUE);
+            } else {
+                Robot.sensorSubsystem.sendToArduino(2);
+            }
         }
     }
 
