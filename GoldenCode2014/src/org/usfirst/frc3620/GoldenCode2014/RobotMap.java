@@ -34,7 +34,8 @@ public class RobotMap {
     public static SpeedController driveSubsystemSpeedController4;
     public static SpeedController driveSubsystemSpeedController1;
     public static RobotDrive driveSubsystemTurboDrive;
-    public static Encoder driveSubsystemDriveEncoder;
+    public static Encoder driveSubsystemDriveEncoder2;
+    public static Encoder driveSubsystemDriveEncoder1;
     public static DigitalOutput sensorSubsystemArduino8;
     public static DigitalInput sensorSubsystemDigitalSonar;
     public static AnalogChannel sensorSubsystemAnalogSonar;
@@ -53,7 +54,7 @@ public class RobotMap {
         pneumaticSubsystemPushCylinder = new DoubleSolenoid(1, 5, 6);      
 	
         
-        pneumaticSubsystemCompressor1 = new Compressor(1, 9, 1, 1);
+        pneumaticSubsystemCompressor1 = new Compressor(1, 11, 1, 2);
 	
         
         pneumaticSubsystemLoadCylinder2 = new DoubleSolenoid(1, 3, 4);      
@@ -96,11 +97,16 @@ public class RobotMap {
         driveSubsystemTurboDrive.setMaxOutput(1.0);
         driveSubsystemTurboDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         driveSubsystemTurboDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);        
-        driveSubsystemDriveEncoder = new Encoder(1, 7, 1, 8, false, EncodingType.k4X);
-	LiveWindow.addSensor("DriveSubsystem", "DriveEncoder", driveSubsystemDriveEncoder);
-        driveSubsystemDriveEncoder.setDistancePerPulse(1.0);
-        driveSubsystemDriveEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-        driveSubsystemDriveEncoder.start();
+        driveSubsystemDriveEncoder2 = new Encoder(1, 9, 1, 10, false, EncodingType.k4X);
+	LiveWindow.addSensor("DriveSubsystem", "DriveEncoder2", driveSubsystemDriveEncoder2);
+        driveSubsystemDriveEncoder2.setDistancePerPulse(0.04908734);
+        driveSubsystemDriveEncoder2.setPIDSourceParameter(PIDSourceParameter.kRate);
+        driveSubsystemDriveEncoder2.start();
+        driveSubsystemDriveEncoder1 = new Encoder(1, 7, 1, 8, false, EncodingType.k4X);
+	LiveWindow.addSensor("DriveSubsystem", "DriveEncoder1", driveSubsystemDriveEncoder1);
+        driveSubsystemDriveEncoder1.setDistancePerPulse(0.04908734);
+        driveSubsystemDriveEncoder1.setPIDSourceParameter(PIDSourceParameter.kRate);
+        driveSubsystemDriveEncoder1.start();
         sensorSubsystemArduino8 = new DigitalOutput(1, 4);
 	
         
