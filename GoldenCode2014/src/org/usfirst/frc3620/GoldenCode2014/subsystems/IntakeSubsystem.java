@@ -31,7 +31,7 @@ public class IntakeSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void intakeMotorOn() {
-        intakeMotor.set(.5);
+        intakeMotor.set(-0.5);
         Robot.getTelemetryTable().putNumber("intake.power", intakeMotor.get());
     }
     public void intakeMotorOff() {

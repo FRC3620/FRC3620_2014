@@ -40,7 +40,7 @@ public class CatapultSubsystem extends Subsystem {
     public boolean inPosition() {
         double encoderValue = chooChooEncoder.getAverageVoltage();
         SmartDashboard.putData("encoder", chooChooEncoder);
-        if ((0.403 < encoderValue) && (encoderValue < .600)) { //Checks if the motor is in the
+        if ((1.8 < encoderValue) && (encoderValue < 2.0)) { //Checks if the motor is in the
             return true;                                  //cocked position
         } else {
             return false;
