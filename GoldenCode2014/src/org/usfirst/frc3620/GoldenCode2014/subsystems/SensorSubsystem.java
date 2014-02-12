@@ -71,6 +71,9 @@ public class SensorSubsystem extends Subsystem {
         SmartDashboard.putNumber("digital sonar ", counter.getPeriod());
         SmartDashboard.putNumber("feet", getAnalogDistanceInFeet());
         SmartDashboard.putBoolean("fire", Robot.catapultSubsystem.visionSeesHotGoal());
+        SmartDashboard.putData("encder 1", Robot.driveSubsystem.driveEncoder1);
+        SmartDashboard.putData("encder 1", Robot.driveSubsystem.driveEncoder2);
+        SmartDashboard.putNumber("choo choo encoder", Robot.catapultSubsystem.chooChooEncoder.getAverageVoltage());
     }
     public double getAnalogDistanceInFeet() {
         return (analogSonar.getAverageVoltage() / .0098) / 12;

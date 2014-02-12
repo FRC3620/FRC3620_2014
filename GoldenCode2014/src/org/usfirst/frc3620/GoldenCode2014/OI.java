@@ -62,7 +62,7 @@ public class OI {
         
         pusherCylinderButton = new JoystickButton(joystick1, 4);
         pusherCylinderButton.whileHeld(new PusherCylinderCommand());
-        extendIntakeButton = new JoystickButton(joystick1, 2);
+        extendIntakeButton = new JoystickButton(joystick1, 6);
         extendIntakeButton.whileHeld(new ExtendIntakeCommand());
         reverseToggle = new JoystickButton(joystick1, 3);
         reverseToggle.whenPressed(new DriveToggleReverseCommand());

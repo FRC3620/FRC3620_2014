@@ -32,16 +32,17 @@ public class CatapultSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void turnMotor() {
-        chooChoomotor.set(-0.5);
+        chooChoomotor.set(-1.0);
     }
     public void motorOff() {
         chooChoomotor.set(0);
     }
     public boolean inPosition() {
         double encoderValue = chooChooEncoder.getAverageVoltage();
-        SmartDashboard.putData("encoder", chooChooEncoder);
-        if ((1.8 < encoderValue) && (encoderValue < 2.0)) { //Checks if the motor is in the
-            return true;                                  //cocked position
+        
+        if ((0.7 < encoderValue) && (encoderValue < 1.153)) { //Checks if the motor is in the
+            SmartDashboard.putBoolean("in dead band", inPosition());
+            return true;                                        //cocked position
         } else {
             return false;
         }
@@ -51,6 +52,7 @@ public class CatapultSubsystem extends Subsystem {
         return SmartDashboard.getBoolean("okToFire", false);
     }
     public boolean isCocked() {
+        
         return isCocked;
     }
     public void setIsCocked(boolean newIsCocked) {
@@ -72,6 +74,6 @@ public class CatapultSubsystem extends Subsystem {
      * add any needed code to run everytime periodic is called.
      */
     public void periodic() {
-        //  
+          
     }
 }
