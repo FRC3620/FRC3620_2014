@@ -44,7 +44,7 @@ public class SensorCommand extends Command {
             isFirstTime = true;
         }
         difference = (t1 - t2);
-        System.out.println(difference);
+     
         if (difference <= -1 || difference >= 1) {
             Robot.sensorSubsystem.SonarErrorTrue();
         } else {
