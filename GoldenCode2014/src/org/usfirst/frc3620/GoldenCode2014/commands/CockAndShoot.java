@@ -65,7 +65,7 @@ public class CockAndShoot extends Command {
                     waitingForTimer = true;
                 }
             } else {
-                if (System.currentTimeMillis() - startTime > 110) {
+                if (System.currentTimeMillis() - startTime > 120) {
                     //then sets cocked to true.
                     rv = true;
                     Robot.catapultSubsystem.setIsCocked(true);
