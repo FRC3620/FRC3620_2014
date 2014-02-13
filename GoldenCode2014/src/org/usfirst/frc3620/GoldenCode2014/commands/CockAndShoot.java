@@ -38,8 +38,20 @@ public class CockAndShoot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.catapultSubsystem.turnMotor();
-
+        
+        boolean isCocked = Robot.catapultSubsystem.isCocked();
+        boolean inPosition = Robot.catapultSubsystem.inPosition();
+        if(isCocked){
+            Robot.catapultSubsystem.turnMotor();
+        }
+        else{
+            if(inPosition){
+                Robot.catapultSubsystem.turnMotorHalfSpeed();
+            }
+            else{
+            Robot.catapultSubsystem.turnMotor();
+            }
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -62,6 +74,7 @@ public class CockAndShoot extends Command {
             if (!waitingForTimer) {
                 if (inPosition) { //turns motor until inPosition is true
                     startTime = System.currentTimeMillis();
+                    
                     waitingForTimer = true;
                 }
             } else {

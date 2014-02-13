@@ -36,6 +36,9 @@ public class CatapultSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public void turnMotorHalfSpeed() {
+        chooChoomotor.set(-0.5);
+    }
     public void turnMotor() {
         chooChoomotor.set(-1.0);
     }
