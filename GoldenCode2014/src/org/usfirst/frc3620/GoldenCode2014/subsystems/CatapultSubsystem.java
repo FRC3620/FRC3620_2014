@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.TimerTask;
 import org.usfirst.frc3620.GoldenCode2014.CatapultState;
 import org.usfirst.frc3620.GoldenCode2014.FDR;
+import org.usfirst.frc3620.GoldenCode2014.Robot;
 
 /**
  *
@@ -78,6 +79,8 @@ public class CatapultSubsystem extends Subsystem {
 
     //NetworkTable visionTable;
     public boolean visionSeesHotGoal() {
+        NetworkTable visionTable = Robot.getVisionTable();
+        // rest of code
         return SmartDashboard.getBoolean("okToFire", false);
     }
 
@@ -126,10 +129,28 @@ public class CatapultSubsystem extends Subsystem {
     class CatapultTask extends TimerTask {
 
         long t0 = 0;
+        Timer armTimer = null;
 
         public void run() {
             if (catpultState == CatapultState.COCKED) {
                 motorOff();
+            } else if (catpultState == CatapultState.SHOOTING_DELAY) {
+                if (Robot.intakeSubsystem.hoopStateDown == true) {
+                    setCatapultState(CatapultState.SHOOTING);
+                } else {
+                    Robot.pneumaticSubsystem.loaderPushOut();
+                    if (armTimer == null) {
+                        //just start shooting delay state
+                        armTimer = new Timer();
+                        armTimer.start();
+                    } else {
+                        if (armTimer.get() > 3.0) {
+                            // timer went off
+                            setCatapultState(CatapultState.SHOOTING);
+                            armTimer = null;
+                        }
+                    }
+                }
             } else if (catpultState == CatapultState.SHOOTING) {
                 if (inPosition()) {
                     turnMotor();
@@ -149,15 +170,15 @@ public class CatapultSubsystem extends Subsystem {
                 }
             } else if (catpultState == CatapultState.COCKING_TIMER) {
                 long elapsedTime = (System.currentTimeMillis() - t0);
-                if (elapsedTime <= 120) {
+                double slider = DriverStation.getInstance().getAnalogIn(1);
+                double delay = 100 + (10 * slider);
+                if (elapsedTime <= delay) {
                     turnMotorHalfSpeed();
-                }
-                else{motorOff();
-                setCatapultState(CatapultState.COCKED);
+                } else {
+                    motorOff();
+                    setCatapultState(CatapultState.COCKED);
                 }
             }
-
         }
-
     }
 }

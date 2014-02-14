@@ -107,6 +107,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         broadcastPeriodicToSubsystems();
+        
     }
     /**
      * This function gets call once at the start of test.
