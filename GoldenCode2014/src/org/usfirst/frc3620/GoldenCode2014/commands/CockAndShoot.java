@@ -55,11 +55,11 @@ public class CockAndShoot extends Command {
         boolean inPosition = Robot.catapultSubsystem.inPosition();
         if (isCocked) {
             if (inPosition) {
-                Robot.pneumaticSubsystem.loaderPushOut();
+                Robot.pneumaticSubsystem.hoopDown();
                 rv = false;
             } else {
                 Robot.catapultSubsystem.setIsCocked(false);
-                Robot.pneumaticSubsystem.loaderPushIn();
+                Robot.pneumaticSubsystem.hoopUp();
                 rv = true;
             }
         } else {

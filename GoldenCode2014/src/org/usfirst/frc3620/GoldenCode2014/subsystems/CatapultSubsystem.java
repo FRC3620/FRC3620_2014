@@ -129,32 +129,33 @@ public class CatapultSubsystem extends Subsystem {
     class CatapultTask extends TimerTask {
 
         long t0 = 0;
-        Timer armTimer = null;
+        long shootingT0 = 0;
 
         public void run() {
+            SmartDashboard.putNumber("shooter.loop.lastTime", System.currentTimeMillis());
             if (catpultState == CatapultState.COCKED) {
+                /**
+                 * we are in the cocked state. We will stay here until someone 
+                 * else (a Command in Teleop or Autonomous) calls
+                 * setCatapultState(SHOOTING_DELAY).
+                 */
                 motorOff();
             } else if (catpultState == CatapultState.SHOOTING_DELAY) {
-                if (Robot.intakeSubsystem.hoopStateDown == true) {
+                System.out.println ("in shooting delay");
+                if (Robot.pneumaticSubsystem.getHoopDown() == true) {
                     setCatapultState(CatapultState.SHOOTING);
                 } else {
-                    Robot.pneumaticSubsystem.loaderPushOut();
-                    if (armTimer == null) {
-                        //just start shooting delay state
-                        armTimer = new Timer();
-                        armTimer.start();
-                    } else {
-                        if (armTimer.get() > 3.0) {
-                            // timer went off
-                            setCatapultState(CatapultState.SHOOTING);
-                            armTimer = null;
-                        }
-                    }
+                    Robot.pneumaticSubsystem.hoopDown();
                 }
             } else if (catpultState == CatapultState.SHOOTING) {
+                /**
+                 * we are shooting. We run the motor until the 
+                 */
                 if (inPosition()) {
+                    Robot.pneumaticSubsystem.hoopDown();
                     turnMotor();
                 } else {
+                    //Robot.pneumaticSubsystem.hoopUp();
                     motorOff();
                     setCatapultState(CatapultState.SHOT);
                 }
@@ -171,7 +172,7 @@ public class CatapultSubsystem extends Subsystem {
             } else if (catpultState == CatapultState.COCKING_TIMER) {
                 long elapsedTime = (System.currentTimeMillis() - t0);
                 double slider = DriverStation.getInstance().getAnalogIn(1);
-                double delay = 100 + (10 * slider);
+                double delay = 100 + (20 * slider);
                 if (elapsedTime <= delay) {
                     turnMotorHalfSpeed();
                 } else {

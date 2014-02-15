@@ -38,20 +38,18 @@ public class ExtendIntakeCommand extends Command {
             
             if (Robot.oi.intakeReverseButton.get() == false && Robot.oi.extendIntakeButton.get() == true) {
                 Robot.intakeSubsystem.intakeMotorOn();
-                Robot.pneumaticSubsystem.loaderPushOut();
-                Robot.intakeSubsystem.setHoopState(true); // hoop is down
+                Robot.pneumaticSubsystem.hoopDown();
+               
             } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == false) {
                 Robot.intakeSubsystem.intakeMotorReverse();
-                Robot.pneumaticSubsystem.loaderPushIn();
-                Robot.intakeSubsystem.setHoopState(false);
+                Robot.pneumaticSubsystem.hoopUp();
+               
             } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == true) {
                 Robot.intakeSubsystem.intakeMotorReverse();
-                Robot.pneumaticSubsystem.loaderPushOut();
-                Robot.intakeSubsystem.setHoopState(true);
+                Robot.pneumaticSubsystem.hoopDown();               
             } else {
-                Robot.pneumaticSubsystem.loaderPushIn();
-                Robot.intakeSubsystem.intakeMotorOff();
-                Robot.intakeSubsystem.setHoopState(false);
+                Robot.pneumaticSubsystem.hoopUp();             
+                
             }
         }
         // Make this return true when this Command no longer needs to run execute()
@@ -61,9 +59,9 @@ public class ExtendIntakeCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.pneumaticSubsystem.loaderPushIn();
+        Robot.pneumaticSubsystem.hoopUp();
         Robot.intakeSubsystem.intakeMotorOff();
-        Robot.intakeSubsystem.setHoopState(false);
+       
     }
 
     // Called when another command which requires one or more of the same

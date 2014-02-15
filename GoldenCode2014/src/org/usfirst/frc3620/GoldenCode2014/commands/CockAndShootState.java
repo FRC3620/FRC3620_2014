@@ -26,16 +26,18 @@ public class CockAndShootState extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.println("in cock and shoot init");
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         CatapultState currentState = Robot.catapultSubsystem.getCatapultState();
         if (currentState == CatapultState.COCKED) {
+          
             Robot.catapultSubsystem.setCatapultState(CatapultState.SHOOTING_DELAY);
         } else if (currentState == CatapultState.COCKING_CAM) {
             //ignoring
         } else if (currentState == CatapultState.COCKING_TIMER) {
-            Robot.catapultSubsystem.setCatapultState(CatapultState.SHOOTING_DELAY);
+            
         } else if (currentState == CatapultState.SHOT) {
             Robot.catapultSubsystem.setCatapultState(CatapultState.COCKING_CAM);
         } else if (currentState == CatapultState.SHOOTING) {
@@ -51,6 +53,7 @@ public class CockAndShootState extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+        System.out.println("in cock and shoot end");
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
