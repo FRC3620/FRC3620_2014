@@ -37,7 +37,7 @@ public class  DriveArcadeCommand extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-      
+        System.out.println ("driveArcade done");
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

@@ -22,7 +22,7 @@ public class AutonomousWait extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("wait initialize");
+        System.out.println("autonomous wait initialize");
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -31,18 +31,18 @@ public class AutonomousWait extends Command {
     protected boolean isFinished() {
         if (Robot.catapultSubsystem.visionSeesHotGoal() == true)
         {
-            System.out.println("Saw Goal");
+            System.out.println("autonomous wait Saw Goal");
             return true;
         }
         if (Robot.getAutonomousElapsedTime() >= 6.0) {
-            System.out.println("time out");
+            System.out.println("autonomous wait timed out");
             return true;
         }
         return false;
     }
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("wait end");
+        System.out.println("autonomous wait ended");
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

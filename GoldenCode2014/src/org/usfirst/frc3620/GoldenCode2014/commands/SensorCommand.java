@@ -46,11 +46,11 @@ public class SensorCommand extends Command {
         difference = (t1 - t2);
      
         if (difference <= -1 || difference >= 1) {
-            Robot.sensorSubsystem.SonarErrorTrue();
+            Robot.sensorSubsystem.sonarErrorTrue();
         } else {
-            Robot.sensorSubsystem.SonarErrorfalse();
+            Robot.sensorSubsystem.sonarErrorfalse();
         }
-        if (distance <= 12 && distance >= 10 && Robot.sensorSubsystem.SonarErrorfalse()) {
+        if (distance <= 12 && distance >= 10 && Robot.sensorSubsystem.sonarErrorfalse()) {
             Robot.sensorSubsystem.sendToArduino(SensorSubsystem.GREEN);
         } else {
             if (Robot.driverStation.getAlliance() == DriverStation.Alliance.kBlue) {

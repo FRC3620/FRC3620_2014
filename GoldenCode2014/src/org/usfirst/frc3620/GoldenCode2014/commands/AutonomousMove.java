@@ -25,7 +25,9 @@ public class AutonomousMove extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("drive init");
+        System.out.println("autonomous drive init");
+        Robot.pneumaticSubsystem.hoopDown();
+        
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -42,7 +44,7 @@ public class AutonomousMove extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("drive end");
+        System.out.println("autonomous drive end");
         Robot.driveSubsystem.allStop();
     }
     // Called when another command which requires one or more of the same

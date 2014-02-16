@@ -9,7 +9,6 @@
 // it from being updated in the future.
 package org.usfirst.frc3620.GoldenCode2014;
 import org.usfirst.frc3620.GoldenCode2014.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
@@ -67,7 +66,7 @@ public class OI {
         cockAndShootStateButton = new JoystickButton(joystick1, 1);
         cockAndShootStateButton.whenPressed(new CockAndShootState());
         pusherCylinderButton = new JoystickButton(joystick1, 4);
-        pusherCylinderButton.whileHeld(new PusherCylinderCommand());
+        pusherCylinderButton.whenPressed(new PusherCylinderCommand());
         extendIntakeButton = new JoystickButton(joystick1, 6);
         extendIntakeButton.whileHeld(new ExtendIntakeCommand());
         reverseToggle = new JoystickButton(joystick1, 3);

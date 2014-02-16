@@ -18,8 +18,6 @@ import org.usfirst.frc3620.GoldenCode2014.Robot;
  */
 public class ExtendIntakeCommand extends Command {
 
-  
-
     public ExtendIntakeCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -34,25 +32,24 @@ public class ExtendIntakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        if (Robot.oi.intakeReverseButton.get() == false && Robot.oi.extendIntakeButton.get() == true) {
+            Robot.intakeSubsystem.intakeMotorOn();
+            Robot.pneumaticSubsystem.hoopDown();
 
-            
-            if (Robot.oi.intakeReverseButton.get() == false && Robot.oi.extendIntakeButton.get() == true) {
-                Robot.intakeSubsystem.intakeMotorOn();
-                Robot.pneumaticSubsystem.hoopDown();
-               
-            } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == false) {
-                Robot.intakeSubsystem.intakeMotorReverse();
-                Robot.pneumaticSubsystem.hoopUp();
-               
-            } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == true) {
-                Robot.intakeSubsystem.intakeMotorReverse();
-                Robot.pneumaticSubsystem.hoopDown();               
-            } else {
-                Robot.pneumaticSubsystem.hoopUp();             
-                
-            }
+        } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == false) {
+            Robot.intakeSubsystem.intakeMotorReverse();
+            Robot.pneumaticSubsystem.hoopUp();
+
+        } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == true) {
+            Robot.intakeSubsystem.intakeMotorReverse();
+            Robot.pneumaticSubsystem.hoopDown();
+        } else {
+            Robot.pneumaticSubsystem.hoopUp();
+
         }
-        // Make this return true when this Command no longer needs to run execute()
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
@@ -61,7 +58,7 @@ public class ExtendIntakeCommand extends Command {
     protected void end() {
         Robot.pneumaticSubsystem.hoopUp();
         Robot.intakeSubsystem.intakeMotorOff();
-       
+
     }
 
     // Called when another command which requires one or more of the same

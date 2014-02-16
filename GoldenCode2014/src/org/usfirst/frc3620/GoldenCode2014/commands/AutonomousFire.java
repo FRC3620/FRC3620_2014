@@ -9,6 +9,7 @@
 // it from being updated in the future.
 package org.usfirst.frc3620.GoldenCode2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc3620.GoldenCode2014.CatapultState;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
 /**
  *
@@ -25,13 +26,12 @@ public class AutonomousFire extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("fire init");
-        startTime = System.currentTimeMillis();
-        elapsedTime = System.currentTimeMillis() - startTime;
+        System.out.println("autonomousfire init");
+        Robot.catapultSubsystem.setCatapultState(CatapultState.SHOOTING);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("firing");
+        System.out.println("autoomous firing");
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -39,7 +39,7 @@ public class AutonomousFire extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("fire end");
+        System.out.println("autonomous end");
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
