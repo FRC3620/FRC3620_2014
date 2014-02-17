@@ -71,9 +71,12 @@ public class CatapultSubsystem extends Subsystem {
         // rest of code
         boolean rv;
         rv = GoalWatcher.visionSeesHotGoal(Robot.getVisionTable());
+        if(!rv){
+        // this is just for debugging, look for a signal from the dashboard to 
+        // fire if the vision code doesn't see anything yet
+            rv = SmartDashboard.getBoolean("okToFire", false);
+        }
         
-        // this is just for debugging
-        rv = SmartDashboard.getBoolean("okToFire", false);
         SmartDashboard.putBoolean("catapult.seeHotGoal", rv);
         return rv;
     }
