@@ -136,7 +136,7 @@ public class Robot extends IterativeRobot {
     public void disabledInit() {
         currentRobotMode = RobotMode.DISABLED;
         broadcastModeChangeToSubsystems();
-        Robot.driveSubsystem.init();
+        
     }
     public void disabledPeriodic() {
         broadcastPeriodicToSubsystems();

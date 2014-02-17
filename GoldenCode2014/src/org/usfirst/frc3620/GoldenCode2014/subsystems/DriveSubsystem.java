@@ -112,6 +112,9 @@ public class DriveSubsystem extends Subsystem {
         if (Robot.getCurrentRobotMode() == RobotMode.TELEOP) {
             setReverseMode(false);
         }
+         if (Robot.getCurrentRobotMode() == RobotMode.DISABLED) {
+            resetEncoders();
+        }
     }
     /**
      * add any needed code to run everytime periodic is called.

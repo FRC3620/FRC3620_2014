@@ -69,28 +69,9 @@ public class CatapultSubsystem extends Subsystem {
     public boolean visionSeesHotGoal() {
       
         // rest of code
-         Throwable boom = null;
-        try {
-        NetworkTable.setServerMode();
-        NetworkTable visionTable = NetworkTable.getTable("vision");
-        if(GoalWatcher.cogCenter(visionTable) && GoalWatcher.visionSeesHotGoal(visionTable))
-            visionTable.putBoolean("hot", true);
-        else
-        visionTable.putBoolean("hot", false);
-            while (true) {
-                boolean fire = GoalWatcher.visionSeesHotGoal(visionTable);
-                if (fire) {
-                    System.out.println ("firing");
-                } else {
-                    System.out.println ("not firing");
-                }
-               
-            }
-        } catch (Exception ex) {
-            boom = ex;
-        }
-        if (boom != null) boom.printStackTrace();
         boolean rv;
+        rv = GoalWatcher.visionSeesHotGoal(Robot.getVisionTable());
+        
         // this is just for debugging
         rv = SmartDashboard.getBoolean("okToFire", false);
         SmartDashboard.putBoolean("catapult.seeHotGoal", rv);
