@@ -101,6 +101,7 @@ public class DriveSubsystem extends Subsystem {
     public void init() {
         SmartDashboard.putBoolean("okToFire", false);
         setReverseMode(false);
+        resetEncoders();
         driveEncoder1.start();
         driveEncoder2.start();
     }
@@ -123,7 +124,6 @@ public class DriveSubsystem extends Subsystem {
         telemetryTable.putNumber("drive.main.right", speedController5.get());
         telemetryTable.putNumber("drive.encoder1", driveEncoder1.getDistance());
         telemetryTable.putNumber("drive.encoder2", driveEncoder2.getDistance());
-
     }
     public void resetEncoders(){
         driveEncoder1.reset();
@@ -132,4 +132,5 @@ public class DriveSubsystem extends Subsystem {
     public double getEncoderDistance(){
         return driveEncoder1.getDistance();
     }
+  
 }

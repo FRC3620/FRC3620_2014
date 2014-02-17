@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc3620.GoldenCode2014.commands;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
 /**
@@ -26,7 +27,7 @@ public class AutonomousMove extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.println("autonomous drive init");
-        Robot.pneumaticSubsystem.hoopDown();
+        //Robot.pneumaticSubsystem.hoopDown();
         
     }
     // Called repeatedly when this Command is scheduled to run
@@ -36,7 +37,7 @@ public class AutonomousMove extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         //watch the sensors and return true if in the right place
-        if (Robot.getAutonomousElapsedTime() >= 1.0) {
+        if (Robot.driveSubsystem.getEncoderDistance() >= 1.0) {
             return true;
         } else {
             return false;
