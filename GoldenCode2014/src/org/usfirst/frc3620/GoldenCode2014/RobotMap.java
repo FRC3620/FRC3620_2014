@@ -36,7 +36,6 @@ public class RobotMap {
     public static RobotDrive driveSubsystemTurboDrive;
     public static Encoder driveSubsystemDriveEncoder2;
     public static Encoder driveSubsystemDriveEncoder1;
-    public static DigitalOutput sensorSubsystemArduino8;
     public static DigitalInput sensorSubsystemDigitalSonar;
     public static AnalogChannel sensorSubsystemAnalogSonar;
     public static DigitalOutput sensorSubsystemArduino1;
@@ -108,9 +107,6 @@ public class RobotMap {
         driveSubsystemDriveEncoder1.setDistancePerPulse(0.04908734);
         driveSubsystemDriveEncoder1.setPIDSourceParameter(PIDSourceParameter.kRate);
         driveSubsystemDriveEncoder1.start();
-        sensorSubsystemArduino8 = new DigitalOutput(1, 4);
-	
-        
         sensorSubsystemDigitalSonar = new DigitalInput(1, 5);
 	LiveWindow.addSensor("SensorSubsystem", "DigitalSonar", sensorSubsystemDigitalSonar);
         

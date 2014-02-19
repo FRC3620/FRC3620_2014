@@ -39,7 +39,7 @@ public class CatapultSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void turnMotorHalfSpeed() {
-        chooChoomotor.set(-0.5);
+        chooChoomotor.set(-0.75);
     }
     public void turnMotor() {
         chooChoomotor.set(-1.0);
@@ -195,7 +195,7 @@ public class CatapultSubsystem extends Subsystem {
                  */
                 long elapsedTime = (System.currentTimeMillis() - t0);
                 double slider = DriverStation.getInstance().getAnalogIn(1);
-                double delay = 100 + (20 * slider);
+                double delay = 100 + (34 * slider);
                 telemetryTable.putNumber("catapult.delay", delay);
                 if (DEBUG) {
                     System.out.println("elsped: " + elapsedTime + ", delay = " + delay);

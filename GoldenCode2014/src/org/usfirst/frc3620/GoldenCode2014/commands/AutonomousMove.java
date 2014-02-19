@@ -37,7 +37,7 @@ public class AutonomousMove extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         //watch the sensors and return true if in the right place
-        if (Robot.driveSubsystem.getEncoderDistance() >= 1.0) {
+        if (Robot.driveSubsystem.getEncoderDistance() >= 14.0) {
             return true;
         } else {
             return false;

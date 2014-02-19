@@ -11,6 +11,8 @@
 
 package org.usfirst.frc3620.GoldenCode2014.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc3620.GoldenCode2014.CatapultState;
+import org.usfirst.frc3620.GoldenCode2014.Robot;
 
 /**
  *
@@ -21,6 +23,9 @@ public class AutonomousCommandGroup extends CommandGroup {
         addSequential(new AutonomousMove());
         addSequential(new AutonomousWait());
         addSequential(new AutonomousFire());
+        
+       addSequential(new AutonomousWait2());
+        
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

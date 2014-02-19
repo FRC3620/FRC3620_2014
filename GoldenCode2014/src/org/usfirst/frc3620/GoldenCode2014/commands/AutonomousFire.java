@@ -31,11 +31,20 @@ public class AutonomousFire extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("autoomous firing");
+//        System.out.println("autoomous firing");
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-       return true;
+    if(Robot.catapultSubsystem.getCatapultState() == CatapultState.SHOT){
+        return true;
+    }
+    else if(Robot.catapultSubsystem.getCatapultState() == CatapultState.SHOOTING_DELAY){
+    return false;
+    }
+    else if(Robot.catapultSubsystem.getCatapultState() == CatapultState.SHOOTING){
+    return false;
+    }
+    return true;
     }
     // Called once after isFinished returns true
     protected void end() {

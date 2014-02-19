@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
         
         // make sure we have tables for the commands to use
         telemetryTable = NetworkTable.getTable("telemetry");
-        visionTable = NetworkTable.getTable("vision"); 
+        visionTable = NetworkTable.getTable("visionTable"); 
         
         preferences = Preferences.getInstance();
         System.out.println ("running on cRIO \"" + preferences.getString("who", "**unknown**") + "\"");
