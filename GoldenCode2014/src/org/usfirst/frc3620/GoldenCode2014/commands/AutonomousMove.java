@@ -39,8 +39,14 @@ public class AutonomousMove extends Command {
         //watch the sensors and return true if in the right place
         if (Robot.driveSubsystem.getEncoderDistance() >= 14.0) {
             return true;
-        } else {
+        } 
+        else if(Robot.getAutonomousElapsedTime() >= 6.0) {
+            System.out.println("autonomous move timed out");
+            return true;
+        } 
+        else{
             return false;
+                
         }
     }
     // Called once after isFinished returns true

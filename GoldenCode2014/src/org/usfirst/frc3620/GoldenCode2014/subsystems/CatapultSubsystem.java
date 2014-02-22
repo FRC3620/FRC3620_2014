@@ -77,6 +77,11 @@ public class CatapultSubsystem extends Subsystem {
             rv = SmartDashboard.getBoolean("okToFire", false);
         }
         
+        if(rv){
+            System.out.println("sees hot goal");
+        Robot.sensorSubsystem.sendToArduino(SensorSubsystem.PURPLE);
+        }
+        else{System.out.println("does not see hot goal");}
         SmartDashboard.putBoolean("catapult.seeHotGoal", rv);
         return rv;
     }
