@@ -24,7 +24,7 @@ public class AutonomousCommandGroup extends CommandGroup {
         addSequential(new AutonomousWait());
         addSequential(new AutonomousFire());
         
-       addSequential(new AutonomousWait2());
+       //addSequential(new AutonomousWait2());
         
         // Add Commands here:
         // e.g. addSequential(new Command1());
