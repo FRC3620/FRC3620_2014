@@ -26,7 +26,7 @@ public class AutonomousFire extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("autonomousfire init");
+        
         Robot.catapultSubsystem.setCatapultState(CatapultState.SHOOTING_DELAY);
     }
     // Called repeatedly when this Command is scheduled to run

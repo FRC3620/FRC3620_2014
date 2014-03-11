@@ -107,7 +107,7 @@ public class RobotMap {
         driveSubsystemDriveEncoder1.setDistancePerPulse(0.04908734);
         driveSubsystemDriveEncoder1.setPIDSourceParameter(PIDSourceParameter.kRate);
         driveSubsystemDriveEncoder1.start();
-        sensorSubsystemDigitalSonar = new DigitalInput(1, 4);
+        sensorSubsystemDigitalSonar = new DigitalInput(1, 5);
 	LiveWindow.addSensor("SensorSubsystem", "DigitalSonar", sensorSubsystemDigitalSonar);
         
         sensorSubsystemAnalogSonar = new AnalogChannel(1, 6);

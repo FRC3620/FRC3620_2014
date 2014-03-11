@@ -22,18 +22,14 @@ public class AutonomousWait extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("autonomous wait initialize");
+        System.out.println("Pray to Woody Flowers!");
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (Robot.catapultSubsystem.visionSeesHotGoal() == true)
-        {
-            System.out.println("autonomous wait Saw Goal");
-            return true;
-        }
+       
         if (Robot.getAutonomousElapsedTime() >= 6.0) {
             System.out.println("autonomous wait timed out");
             return true;

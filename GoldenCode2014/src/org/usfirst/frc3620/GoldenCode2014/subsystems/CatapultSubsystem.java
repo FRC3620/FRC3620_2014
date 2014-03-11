@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.TimerTask;
 import org.usfirst.frc3620.GoldenCode2014.CatapultState;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
+import org.usfirst.frc3620.GoldenCode2014.RobotMode;
 /**
  *
  */
@@ -158,7 +159,11 @@ public class CatapultSubsystem extends Subsystem {
                     
                     turnMotor();
                 } else {
+                    if(Robot.getCurrentRobotMode() == RobotMode.AUTONOMOUS){
+                    }
+                    else{
                     Robot.pneumaticSubsystem.hoopUp();
+                    }
                     motorOff();
                     setCatapultState(CatapultState.SHOT);
                 }
