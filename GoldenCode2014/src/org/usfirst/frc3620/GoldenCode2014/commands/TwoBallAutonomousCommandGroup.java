@@ -18,14 +18,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TwoBallAutonomousCommandGroup extends CommandGroup {
     
     public  TwoBallAutonomousCommandGroup() {
-        addParallel(new AutonomousFire());
         addParallel(new AutonomousSnuggleCommand());//short intake to secure the ball
+        addSequential(new AutonomousFire());
         addSequential(new AutonomousCockCommand());
         addSequential(new AutonomousIntakeCommand());
         addSequential(new AutonomousRaisHoopCommand());
         addSequential(new AutonomousWait());
         addSequential(new AutonomousFire());
-        addSequential(new AutonomousMove()); //move arm up
+        addSequential(new AutonomousMove());//move arm up
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

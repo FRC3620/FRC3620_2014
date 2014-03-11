@@ -24,6 +24,7 @@ public class  AutonomousCockCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.println("cocking");
         Robot.catapultSubsystem.setCatapultState(CatapultState.COCKING_CAM);
     }
     // Called repeatedly when this Command is scheduled to run
