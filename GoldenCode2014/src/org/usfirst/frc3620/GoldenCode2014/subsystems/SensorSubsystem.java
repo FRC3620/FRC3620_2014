@@ -48,6 +48,7 @@ public class SensorSubsystem extends Subsystem {
         counter.start();
         counter.setSemiPeriodMode(true);
         SmartDashboard.putNumber("light", 0);
+        sendToArduino(0);
     }
     /**
      * add any needed code to run if the mode changes.

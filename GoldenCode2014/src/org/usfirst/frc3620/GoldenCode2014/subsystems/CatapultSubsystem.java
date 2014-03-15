@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.TimerTask;
 import org.usfirst.frc3620.GoldenCode2014.CatapultState;
+import org.usfirst.frc3620.GoldenCode2014.PreferencesNames;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
 import org.usfirst.frc3620.GoldenCode2014.RobotMode;
 /**
@@ -84,7 +85,7 @@ public class CatapultSubsystem extends Subsystem {
         }
         else{System.out.println("does not see hot goal");}
         SmartDashboard.putBoolean("catapult.seeHotGoal", rv);
-        return rv;
+        return rv;                                                                                  
     }
     public boolean isCocked() {
         return isCocked;
@@ -126,7 +127,6 @@ public class CatapultSubsystem extends Subsystem {
         long t0 = 0;
         long shootingT0 = 0;
         public void run() {
-            SmartDashboard.putNumber("shooter.loop.lastTime", System.currentTimeMillis());
             if (catpultState == CatapultState.COCKED) {
                 /*
                  * we are in the cocked state. We will stay in this state until
@@ -204,8 +204,7 @@ public class CatapultSubsystem extends Subsystem {
                  * state COCKED.
                  */
                 long elapsedTime = (System.currentTimeMillis() - t0);
-                double slider = DriverStation.getInstance().getAnalogIn(1);
-                double delay = 100 + (34 * slider);
+                double delay = Robot.preferences.getDouble(PreferencesNames.CHOOCHOO_DELAY, 236);
                 telemetryTable.putNumber("catapult.delay", delay);
                 if (DEBUG) {
                     System.out.println("elsped: " + elapsedTime + ", delay = " + delay);

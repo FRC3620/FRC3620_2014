@@ -14,6 +14,7 @@ import org.usfirst.frc3620.GoldenCode2014.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc3620.GoldenCode2014.PreferencesNames;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
 import org.usfirst.frc3620.GoldenCode2014.RobotMode;
 /**
@@ -36,7 +37,8 @@ public class IntakeSubsystem extends Subsystem {
         intakeMotor.set(0.5);
     }
     public void intakeMotorOn() {
-        intakeMotor.set(-0.5);
+        double motorSpeed = Robot.preferences.getDouble(PreferencesNames.INTAKE_SPEED, 50);
+        intakeMotor.set(-motorSpeed / 100.0);
         Robot.getTelemetryTable().putNumber("intake.power", intakeMotor.get());
     }
     public void intakeMotorOff() {
