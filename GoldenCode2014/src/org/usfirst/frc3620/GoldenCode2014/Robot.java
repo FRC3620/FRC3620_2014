@@ -154,7 +154,6 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) {
             autonomousCommand.cancel();
         }
-
         previousRobotMode = currentRobotMode;
         currentRobotMode = RobotMode.DISABLED;
         broadcastModeChangeToSubsystems();

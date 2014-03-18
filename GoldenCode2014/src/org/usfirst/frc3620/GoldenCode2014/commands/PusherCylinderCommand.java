@@ -29,14 +29,19 @@ public class PusherCylinderCommand extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        Robot.pneumaticSubsystem.clampUp();
+         long pusherElapsedTime = System.currentTimeMillis() - pusherT0;
+        if (pusherElapsedTime >= 500) {
+           Robot.pneumaticSubsystem.pusherPushOut();
+        } 
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         long pusherElapsedTime = System.currentTimeMillis() - pusherT0;
-        if (pusherElapsedTime <= 1000) {
-            return false;
-        } else {
+        if (pusherElapsedTime >= 1500) {
             return true;
+        } else {
+            return false;
         }
     }
     

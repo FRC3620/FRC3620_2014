@@ -26,6 +26,7 @@ public class RobotMap {
     public static DoubleSolenoid pneumaticSubsystemPushCylinder;
     public static Compressor pneumaticSubsystemCompressor1;
     public static DoubleSolenoid pneumaticSubsystemLoadCylinder2;
+    public static DoubleSolenoid pneumaticSubsystemClampCylinder;
     public static SpeedController driveSubsystemSpeedController2;
     public static SpeedController driveSubsystemSpeedController3;
     public static SpeedController driveSubsystemSpeedController5;
@@ -57,7 +58,10 @@ public class RobotMap {
         pneumaticSubsystemCompressor1 = new Compressor(1, 11, 1, 2);
 	
         
-        pneumaticSubsystemLoadCylinder2 = new DoubleSolenoid(1, 3, 4);      
+        pneumaticSubsystemLoadCylinder2 = new DoubleSolenoid(1, 7, 8);      
+	
+        
+        pneumaticSubsystemClampCylinder = new DoubleSolenoid(1, 3, 4);      
 	
         
         driveSubsystemSpeedController2 = new Talon(1, 2);
