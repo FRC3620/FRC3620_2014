@@ -24,7 +24,7 @@ public class PusherCylinderCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.pneumaticSubsystem.pusherPushOut();
+       
         pusherT0 = System.currentTimeMillis();
     }
     // Called repeatedly when this Command is scheduled to run

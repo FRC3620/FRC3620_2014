@@ -30,6 +30,7 @@ public class ExtendIntakeCommand extends Command {
         if (Robot.oi.intakeReverseButton.get() == false && Robot.oi.extendIntakeButton.get() == true) {
             Robot.intakeSubsystem.intakeMotorOn();
             Robot.pneumaticSubsystem.hoopDown();
+            Robot.pneumaticSubsystem.clampUp();
         } else if (Robot.oi.intakeReverseButton.get() == true && Robot.oi.extendIntakeButton.get() == false) {
             Robot.intakeSubsystem.intakeMotorReverse();
             Robot.pneumaticSubsystem.hoopUp();
@@ -49,6 +50,7 @@ public class ExtendIntakeCommand extends Command {
         Robot.pneumaticSubsystem.hoopUp();
         Robot.intakeSubsystem.intakeMotorOff();
         System.out.println("in end");
+        Robot.pneumaticSubsystem.clampDown();
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
