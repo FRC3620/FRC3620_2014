@@ -35,6 +35,7 @@ public class IntakeSubsystem extends Subsystem {
     }
     public void intakeMotorReverse() {
         intakeMotor.set(0.5);
+        Robot.getTelemetryTable().putNumber("intake.power", intakeMotor.get());
     }
     public void intakeMotorOn() {
         double motorSpeed = Robot.preferences.getDouble(PreferencesNames.INTAKE_SPEED, 50);

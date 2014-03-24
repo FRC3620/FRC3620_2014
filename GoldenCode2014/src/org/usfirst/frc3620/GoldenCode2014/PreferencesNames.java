@@ -21,6 +21,7 @@ public class PreferencesNames {
     public static final String SATURATION_UPPER = "saturation_upper";
     public static final String VALUE_LOWER = "value_lower";
     public static final String VALUE_UPPER = "value_upper";
+     public static final String CLAMP_DELAY = "clamp_delay";
     
     public static final String AUTONOMOUS_CHOICE_NONE = "None";
     public static final String AUTONOMOUS_CHOICE_TWO_BALL = "Two Ball";

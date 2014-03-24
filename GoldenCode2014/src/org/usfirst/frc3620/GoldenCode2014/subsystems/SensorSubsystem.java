@@ -95,7 +95,7 @@ public class SensorSubsystem extends Subsystem {
     }
     public void sendToArduino(int i) {
         SmartDashboard.putNumber("arduino", i);
-        System.out.println(i);
+        //System.out.println(i);
         if ((i & 1) != 0) {
             arduino1.set(true);
             

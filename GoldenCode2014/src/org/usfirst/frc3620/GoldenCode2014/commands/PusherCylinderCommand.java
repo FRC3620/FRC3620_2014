@@ -9,12 +9,14 @@
 // it from being updated in the future.
 package org.usfirst.frc3620.GoldenCode2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc3620.GoldenCode2014.PreferencesNames;
 import org.usfirst.frc3620.GoldenCode2014.Robot;
 /**
  *
  */
 public class PusherCylinderCommand extends Command {
     long pusherT0 = 0;
+    
     public PusherCylinderCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,21 +26,29 @@ public class PusherCylinderCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-       
-        pusherT0 = System.currentTimeMillis();
+        pusherT0 = 0;
+        Robot.pneumaticSubsystem.clampUp();
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.pneumaticSubsystem.clampUp();
-         long pusherElapsedTime = System.currentTimeMillis() - pusherT0;
-        if (pusherElapsedTime >= 500) {
+       
+       
+         
+        if (Robot.pneumaticSubsystem.getClampUp()== true) {
            Robot.pneumaticSubsystem.pusherPushOut();
+           if(pusherT0 == 0){
+           pusherT0 = System.currentTimeMillis();
+           }
         } 
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         long pusherElapsedTime = System.currentTimeMillis() - pusherT0;
-        if (pusherElapsedTime >= 1500) {
+        if (pusherT0 == 0){
+            pusherElapsedTime = 0;
+        }
+        if (pusherElapsedTime >= 1500 ) {
+            System.out.println("pusher done");
             return true;
         } else {
             return false;
