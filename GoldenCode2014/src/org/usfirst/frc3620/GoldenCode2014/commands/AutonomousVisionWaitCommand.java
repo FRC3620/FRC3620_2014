@@ -14,6 +14,7 @@ import org.usfirst.frc3620.GoldenCode2014.Robot;
  *
  */
 public class  AutonomousVisionWaitCommand extends Command {
+    long t0;
     public AutonomousVisionWaitCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,6 +24,8 @@ public class  AutonomousVisionWaitCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+         t0 = System.currentTimeMillis();
+        Robot.visionSubsystem.processOne(null);
         System.out.println("Pray to Dean Kamen!");
     }
     // Called repeatedly when this Command is scheduled to run
@@ -31,11 +34,18 @@ public class  AutonomousVisionWaitCommand extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (Robot.getAutonomousElapsedTime() >= 6.0) {
-            System.out.println("autonomous wait timed out");
-            return true;
+         boolean rv = false;
+        long t1 = System.currentTimeMillis();
+        if (t1 - t0 > 5000) {
+            System.out.println ("timed out");
+            rv = true;
+        } else {
+            rv = Robot.visionSubsystem.isGoalIsHot();
+            if (rv) System.out.println("goal was hot!");
         }
-        return false;
+        return rv;
+        
+      
     }
     // Called once after isFinished returns true
     protected void end() {

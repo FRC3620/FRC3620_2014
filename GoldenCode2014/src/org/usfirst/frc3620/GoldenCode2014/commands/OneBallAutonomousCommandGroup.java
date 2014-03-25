@@ -18,9 +18,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class OneBallAutonomousCommandGroup extends CommandGroup {
     
     public  OneBallAutonomousCommandGroup() {
-        addSequential(new AutonomousFire());
-        addSequential(new AutonomousVisionWaitCommand());
         addSequential(new AutonomousMove());
+        addSequential(new AutonomousVisionWaitCommand());
+        addSequential(new AutonomousFire());
+       
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

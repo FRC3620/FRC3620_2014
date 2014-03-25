@@ -81,8 +81,9 @@ public class DriveSubsystem extends Subsystem {
         return reverse;
     }
     
-    public void allForward() {
-        double p = 0.75;
+    public void allForward(double motorPower) {
+        double p;
+        p = motorPower;
         // we need to negate the power number
         // because we are emulating a joystick, and 
         // forward on a joysick is a neagtive y value.

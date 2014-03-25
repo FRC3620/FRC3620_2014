@@ -29,12 +29,20 @@ public class AutonomousMove extends Command {
     protected void initialize() {
         System.out.println("autonomous drive init");
         Robot.pneumaticSubsystem.hoopUp();
-        
+        startTime = System.currentTimeMillis();
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
-        Robot.driveSubsystem.allForward();
+        elapsedTime = System.currentTimeMillis() - startTime;
+        if(elapsedTime <= 250){
+        Robot.driveSubsystem.allForward(0.25);
+        }
+        if(elapsedTime <= 500 && elapsedTime > 250){
+        Robot.driveSubsystem.allForward(0.50);
+        }
+        if(elapsedTime >= 500){
+        Robot.driveSubsystem.allForward(0.75);
+        }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
