@@ -123,14 +123,14 @@ public class PneumaticSubsystem extends Subsystem {
         Robot.getTelemetryTable().putBoolean("hoop.armdown", getHoopDown());
     }
     public void clampDown(){
-        clampCylinder.set(DoubleSolenoid.Value.kReverse);
+        clampCylinder.set(DoubleSolenoid.Value.kForward);
         clampT0 = 0;
     }
      public void clampUp(){
           if(clampT0 == 0){
         clampT0 = System.currentTimeMillis();
         }
-        clampCylinder.set(DoubleSolenoid.Value.kForward);
+        clampCylinder.set(DoubleSolenoid.Value.kReverse);
         
     }
      public boolean getClampUp(){
