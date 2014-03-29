@@ -13,10 +13,10 @@ import org.usfirst.frc3620.GoldenCode2014.Robot;
 /**
  *
  */
-public class  AutonomousMove2 extends Command {
+public class  AutonomousMoveOnly extends Command {
      long startTime;
     long elapsedTime;
-    public AutonomousMove2() {
+    public AutonomousMoveOnly() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -32,8 +32,10 @@ public class  AutonomousMove2 extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("in move only");
+        elapsedTime = System.currentTimeMillis() - startTime;
+        if(elapsedTime >= 5000){
         Robot.driveSubsystem.allForward(0.75);
+        }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

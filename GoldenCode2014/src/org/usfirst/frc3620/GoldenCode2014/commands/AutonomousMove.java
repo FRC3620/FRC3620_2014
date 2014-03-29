@@ -42,15 +42,16 @@ public class AutonomousMove extends Command {
         }
         if(elapsedTime >= 500){
         Robot.driveSubsystem.allForward(0.75);
-        }
+        } 
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         //watch the sensors and return true if in the right place
-        double distance = Robot.preferences.getDouble(PreferencesNames.AUTONOMOUS_FORWARD_DISTANCE, 52.0);
+        double distance = Robot.preferences.getDouble(PreferencesNames.AUTONOMOUS_FORWARD_DISTANCE, 30.0);
         //2/27/14 9:30PM encoder value was 52.0
         if (Robot.driveSubsystem.getEncoderDistance() >= distance) {
             return true;
+            
         } 
         //else if(Robot.getAutonomousElapsedTime() >= 6.0) {
           //  System.out.println("autonomous move timed out");

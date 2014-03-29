@@ -91,7 +91,11 @@ public class Robot extends IterativeRobot {
             autonomousCommand = new TwoBallAutonomousCommandGroup();
         } else if (witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_VISION_TEST)) {
             autonomousCommand = new AutonomousVisionTestCommand();
-        } else {
+        } 
+        else if (witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_MOVE_ONLY)){
+             autonomousCommand = new AutonomousMoveOnly();
+        }
+                else {
             autonomousCommand = null;
         }
         if (autonomousCommand != null) {

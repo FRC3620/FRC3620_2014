@@ -21,6 +21,7 @@ public class OneBallAutonomousCommandGroup extends CommandGroup {
         addSequential(new AutonomousMove());
         addSequential(new AutonomousVisionWaitCommand());
         addSequential(new AutonomousFire());
+        addSequential(new AutonomousMove2());
        
         // Add Commands here:
         // e.g. addSequential(new Command1());
