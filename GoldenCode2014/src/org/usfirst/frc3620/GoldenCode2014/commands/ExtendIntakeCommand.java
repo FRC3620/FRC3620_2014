@@ -49,7 +49,6 @@ public class ExtendIntakeCommand extends Command {
     protected void end() {
         Robot.pneumaticSubsystem.hoopUp();
         Robot.intakeSubsystem.intakeMotorOff();
-        System.out.println("in end");
         Robot.pneumaticSubsystem.clampDown();
     }
     // Called when another command which requires one or more of the same
