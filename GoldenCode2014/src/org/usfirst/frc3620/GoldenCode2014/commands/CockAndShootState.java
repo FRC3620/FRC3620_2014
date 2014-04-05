@@ -16,6 +16,7 @@ import org.usfirst.frc3620.GoldenCode2014.Robot;
  */
 public class CockAndShootState extends Command {
     long currentTime = System.currentTimeMillis();
+    boolean DEBUG = false;
     
     public CockAndShootState() {
         // Use requires() here to declare subsystem dependencies
@@ -26,13 +27,15 @@ public class CockAndShootState extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("in cock and shoot init");
+        if (DEBUG) 
+            System.out.println("CockAndShootState init");
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         CatapultState currentState = Robot.catapultSubsystem.getCatapultState();
+        if (DEBUG) 
+          System.out.println ("CockAndShootState sees current state = " + currentState);
         if (currentState == CatapultState.COCKED) {
-          
             Robot.catapultSubsystem.setCatapultState(CatapultState.SHOOTING_DELAY);
         } else if (currentState == CatapultState.COCKING_CAM) {
             //ignoring
@@ -42,8 +45,7 @@ public class CockAndShootState extends Command {
             Robot.catapultSubsystem.setCatapultState(CatapultState.COCKING_CAM);
         } else if (currentState == CatapultState.SHOOTING) {
             //ignoring
-        } 
-        else if (currentState == CatapultState.SHOOTING_DELAY){
+        } else if (currentState == CatapultState.SHOOTING_DELAY){
             //ignoring
         }
     }
@@ -53,7 +55,8 @@ public class CockAndShootState extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("in cock and shoot end");
+        if (DEBUG)
+            System.out.println("CockAndShootState end");
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

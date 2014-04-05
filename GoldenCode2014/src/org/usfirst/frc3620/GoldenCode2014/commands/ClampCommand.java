@@ -14,7 +14,6 @@ import org.usfirst.frc3620.GoldenCode2014.Robot;
  *
  */
 public class  ClampCommand extends Command {
-    boolean clampDown = false;
     public ClampCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,16 +23,16 @@ public class  ClampCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        clampDown = !clampDown;
+        boolean clampUp = Robot.pneumaticSubsystem.isClampSetToGoUp();
+        if(clampUp){
+          Robot.pneumaticSubsystem.clampDown();
+        }
+        else{
+          Robot.pneumaticSubsystem.clampUp();
+        }
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(clampDown){
-        Robot.pneumaticSubsystem.clampDown();
-        }
-        else{
-        Robot.pneumaticSubsystem.clampUp();
-        }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
