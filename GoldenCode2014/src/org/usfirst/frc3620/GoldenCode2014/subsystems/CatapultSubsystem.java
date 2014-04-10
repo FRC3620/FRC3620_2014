@@ -139,6 +139,9 @@ public class CatapultSubsystem extends Subsystem {
                 } else {
                     Robot.pneumaticSubsystem.hoopDown();
                 }
+            } else if (catpultState == CatapultState.QUICK_SHOOTING_DELAY) {
+                Robot.pneumaticSubsystem.hoopDown();
+                setCatapultState(CatapultState.SHOOTING);
             } else if (catpultState == CatapultState.SHOOTING) {
                 /*
                  * we are shooting, we stay in this state until the cam comes

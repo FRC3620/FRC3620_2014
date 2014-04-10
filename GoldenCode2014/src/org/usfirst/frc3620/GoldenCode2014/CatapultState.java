@@ -19,6 +19,7 @@ public class CatapultState {
     public static final CatapultState COCKING_CAM = new CatapultState("cocking cam");
     public static final CatapultState COCKING_TIMER = new CatapultState("cocking timer");
     public static final CatapultState SHOOTING_DELAY = new CatapultState("shooting delay");
+    public static final CatapultState QUICK_SHOOTING_DELAY = new CatapultState("quick delay");
     private CatapultState(String l) {
         this.label = l;
     }
