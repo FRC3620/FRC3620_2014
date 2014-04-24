@@ -425,7 +425,7 @@ public class VisionSubsystem extends Subsystem {
                     Robot.driverStationLCD.updateLCD();
                 }
             };
-            timer.schedule(timerTask, 50);
+            timer.schedule(timerTask, 750);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -39,7 +39,7 @@ public class  AutonomousMoveOnly extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (Robot.driveSubsystem.getEncoderDistance() >= 50.0) {
+        if (Robot.driveSubsystem.getEncoderDistance() >= 80.0) {
             return true;
             
         } 

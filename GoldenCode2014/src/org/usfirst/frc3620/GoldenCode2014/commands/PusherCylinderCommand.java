@@ -36,6 +36,7 @@ public class PusherCylinderCommand extends Command {
          
         if (Robot.pneumaticSubsystem.getClampUp()== true) {
            Robot.pneumaticSubsystem.pusherPushOut();
+           Robot.intakeSubsystem.intakeMotorReverse();
            if(pusherT0 == 0){
            pusherT0 = System.currentTimeMillis();
            }
@@ -47,7 +48,7 @@ public class PusherCylinderCommand extends Command {
         if (pusherT0 == 0){
             pusherElapsedTime = 0;
         }
-        if (pusherElapsedTime >= 1500 ) {
+        if (pusherElapsedTime >= 500 ) {
             System.out.println("pusher done");
             return true;
         } else {
@@ -58,6 +59,7 @@ public class PusherCylinderCommand extends Command {
     // Called once after isFinished returns true
     protected void end() {
         Robot.pneumaticSubsystem.pusherPushIn();
+        Robot.intakeSubsystem.intakeMotorOff();
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
