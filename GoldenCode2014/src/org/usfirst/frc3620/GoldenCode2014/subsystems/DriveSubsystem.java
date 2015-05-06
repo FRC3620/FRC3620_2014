@@ -60,13 +60,15 @@ public class DriveSubsystem extends Subsystem {
         if (move < 0) {
             m2 = -m2;
         }
-        if (reverse == true) {
+        /*if (reverse == true) {
             primaryDrive.arcadeDrive(-m2, r2);
             turboDrive.arcadeDrive(-m2, r2);
-        } else {
+        } */
+        m2 = 0.5 * m2;
+        r2 = 0.5 * r2;
             primaryDrive.arcadeDrive(m2, r2);
             turboDrive.arcadeDrive(m2, r2);
-        }
+        
     }
     public void toggleReverseMode() {
         // use setReverseMode so that the dashboard gets updated
