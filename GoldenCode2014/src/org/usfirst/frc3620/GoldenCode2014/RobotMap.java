@@ -55,7 +55,7 @@ public class RobotMap {
         pneumaticSubsystemPushCylinder = new DoubleSolenoid(1, 5, 6);      
 	
         
-        pneumaticSubsystemCompressor1 = new Compressor(1, 11, 1, 2);
+        pneumaticSubsystemCompressor1 = new Compressor(1, 14, 1, 2);
 	
         
         pneumaticSubsystemLoadCylinder2 = new DoubleSolenoid(1, 7, 8);      
